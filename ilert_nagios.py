@@ -114,13 +114,13 @@ def flush(endpoint, directory, port, insecure):
 
 def create_xml(apikey, payload):
     """Create event xml using the provided api key and event payload"""
-    
+
     if 'HOSTOUTPUT' in payload:
         if payload['SERVICEDESC'] == "$" and payload['SERVICESTATE'] == "$" and payload['SERVICEOUTPUT'] == "$": # the code is swapping the host output with service, if service is totaly empty
             payload['SERVICEDESC'] = payload['HOSTOUTPUT']
             payload['SERVICESTATE'] = payload['HOSTSTATE']
 
-    if 'NOTIFICATIONTYPE':
+    if 'NOTIFICATIONTYPE'in payload:
         if payload['NOTIFICATIONTYPE'] == "CUSTOM": # Sending Custom Notification
             payload['NOTIFICATIONTYPE'] = "PROBLEM"
             payload['SERVICEDESC'] = 'CUSTOM : ' + payload['SERVICEDESC']
