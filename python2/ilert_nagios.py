@@ -118,7 +118,7 @@ def create_xml(apikey, payload):
             payload['SERVICEDESC'] = payload['HOSTOUTPUT']
             payload['SERVICESTATE'] = payload['HOSTSTATE']
 
-    if 'NOTIFICATIONTYPE':
+    if 'NOTIFICATIONTYPE' in payload:
         if payload['NOTIFICATIONTYPE'] == "CUSTOM": # Sending Custom Notification
             payload['NOTIFICATIONTYPE'] = "PROBLEM"
             payload['SERVICEDESC'] = 'CUSTOM : ' + payload['SERVICEDESC']
